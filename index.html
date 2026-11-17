@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김승주 포트폴리오</title>
+<meta name="description" content="Flutter 모바일 앱 개발자 김승주의 포트폴리오">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{
+  --bg:#f6f7f9; --card:#ffffff; --ink:#1c1f24; --muted:#6b7280; --line:#e5e7eb;
+  --accent:#2563eb; --accent-soft:#eaf0ff; --chip:#f1f3f6; --chip-ink:#374151;
+  --ios:#111827; --play:#0f9d58; --inner:#9ca3af;
+  --shadow:0 1px 2px rgba(16,24,40,.05),0 8px 24px -12px rgba(16,24,40,.12);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1115; --card:#171a21; --ink:#e7e9ee; --muted:#9aa3b2; --line:#272b35;
+    --accent:#7aa2ff; --accent-soft:#1b2440; --chip:#20242e; --chip-ink:#c9cfdb;
+    --ios:#e7e9ee; --play:#4ade80; --inner:#6b7280;
+    --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1115; --card:#171a21; --ink:#e7e9ee; --muted:#9aa3b2; --line:#272b35;
+  --accent:#7aa2ff; --accent-soft:#1b2440; --chip:#20242e; --chip-ink:#c9cfdb;
+  --ios:#e7e9ee; --play:#4ade80; --inner:#6b7280;
+  --shadow:0 1px 2px rgba(0,0,0,.4),0 8px 24px -12px rgba(0,0,0,.6);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",Roboto,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+
+/* 머리 */
+.hero{padding:56px 0 32px}
+.hero .top{display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.hero img{width:112px;height:112px;border-radius:28px;object-fit:cover;background:var(--card);box-shadow:var(--shadow)}
+.hero h1{margin:0;font-size:30px;letter-spacing:-.02em;line-height:1.25}
+.hero .role{color:var(--muted);font-weight:600;margin:4px 0 10px}
+.contact{display:flex;gap:14px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.contact a{color:inherit}
+.intro{margin:22px 0 0;font-size:16px;max-width:720px}
+.intro b{color:var(--ink)}
+
+/* 세그먼트 */
+.seg{display:inline-flex;background:var(--chip);border-radius:12px;padding:4px;gap:2px;margin:0 0 18px}
+.seg button{border:0;background:transparent;color:var(--muted);font:inherit;font-weight:600;font-size:14px;padding:7px 16px;border-radius:9px;cursor:pointer}
+.seg button.on{background:var(--card);color:var(--ink);box-shadow:var(--shadow)}
+.group{display:none}
+.group.on{display:block}
+
+/* 공통 */
+section{padding:28px 0}
+h2{font-size:22px;margin:0 0 16px;letter-spacing:-.02em;display:flex;align-items:center;gap:10px}
+h2 .sub{font-size:14px;font-weight:500;color:var(--muted)}
+h3{font-size:17px;margin:0;letter-spacing:-.01em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;box-shadow:var(--shadow);padding:20px;margin-bottom:16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips.row{margin-bottom:8px}
+.chips.row:last-child{margin-bottom:0}
+.chip{background:var(--chip);color:var(--chip-ink);border-radius:999px;padding:3px 10px;font-size:12.5px;font-weight:500;white-space:nowrap}
+.chip.hi{background:var(--accent-soft);color:var(--accent);font-weight:600}
+ul{margin:8px 0 0;padding-left:18px}
+li{margin:3px 0}
+.muted{color:var(--muted)}
+.small{font-size:13.5px}
+
+/* 기술 스택 */
+.stack{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.stack .card{margin:0;padding:16px 18px}
+.stack h3{font-size:15px;margin-bottom:8px}
+.stack p{margin:0 0 8px;font-size:14px;color:var(--muted);overflow-wrap:anywhere}
+
+/* 프로젝트 */
+.group{margin:8px 0 28px}
+.group-title{display:flex;align-items:baseline;gap:10px;margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.group-title h3{font-size:16px}
+.group-title .period{font-size:13px;color:var(--muted)}
+.sub-group{display:flex;align-items:baseline;gap:10px;margin:28px 0 12px;padding-bottom:8px;border-bottom:1px dashed var(--line)}
+.sub-group h3{font-size:15px}
+.sub-group .period{font-size:13px;color:var(--muted)}
+.proj .head{display:flex;gap:14px;align-items:flex-start}
+.proj .icon{width:56px;height:56px;border-radius:14px;flex:none;object-fit:cover;background:var(--chip);border:1px solid var(--line)}
+.proj .title-row{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.proj .meta{font-size:13px;color:var(--muted);margin-top:4px;display:flex;flex-wrap:wrap;gap:4px 14px}
+.proj .meta .m i{font-style:normal;font-weight:700;color:var(--inner);margin-right:6px;font-size:11.5px;letter-spacing:.04em}
+.proj .lead{margin:4px 0 0;font-size:14.5px}
+.links{display:flex;gap:6px;flex-wrap:wrap;margin-left:auto}
+.badge{display:inline-flex;align-items:center;gap:5px;border:1px solid var(--line);border-radius:8px;padding:3px 9px;font-size:12px;font-weight:600;color:var(--ink);background:var(--card);white-space:nowrap}
+.badge .bi{flex:none}
+.badge:hover{text-decoration:none;border-color:var(--accent);color:var(--accent)}
+.badge.inner{color:var(--inner);border-style:dashed;cursor:default}
+.shots{display:flex;gap:8px;overflow-x:auto;margin:14px -20px 0;padding:0 20px 6px;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch}
+.shots img{height:220px;width:auto;border-radius:10px;border:1px solid var(--line);scroll-snap-align:start;flex:none;background:var(--chip)}
+.shots img.wide{height:160px}
+.body{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;margin-top:14px}
+@media (max-width:640px){.body{grid-template-columns:1fr}}
+.body h4{margin:0 0 6px;font-size:13px;letter-spacing:.02em;text-transform:uppercase;color:var(--muted)}
+.body p{margin:0;font-size:14.5px}
+.body ul{font-size:14.5px}
+.solve{margin-top:14px;border-left:3px solid var(--accent);background:var(--accent-soft);border-radius:0 12px 12px 0;padding:12px 14px;font-size:14.5px}
+.solve b{display:block;color:var(--accent);font-size:13px;margin-bottom:6px}
+.solve p{margin:0 0 6px;font-size:14.5px}
+.solve p:last-child{margin-bottom:0}
+.solve .k{display:inline-block;font-size:12px;font-weight:700;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:0 6px;margin-right:8px;vertical-align:1px}
+.solve .arrow{color:var(--accent);font-weight:700;margin:0 6px}
+.sub-proj{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line)}
+.sub-proj .head{align-items:center}
+.sub-proj .icon{width:44px;height:44px;border-radius:11px}
+
+/* 경력 */
+.timeline{display:grid;grid-template-columns:150px 1fr;gap:6px 16px;font-size:15px}
+.timeline .when{color:var(--muted);font-variant-numeric:tabular-nums}
+.timeline .what b{font-weight:700}
+.timeline .what .d{font-size:13.5px;color:var(--muted);margin-top:2px}
+@media (max-width:520px){.timeline{grid-template-columns:1fr}.timeline .when{margin-top:8px}}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:640px){.two{grid-template-columns:1fr}}
+
+footer{padding:32px 0 48px;color:var(--muted);font-size:13px;text-align:center}
+@media print{
+  body{background:#fff;color:#000}
+  .card{box-shadow:none;break-inside:avoid}
+  .shots{display:none}
+}
+</style>
+</head>
+<body>
+
+<header class="hero wrap">
+  <div class="top">
+    <img src="img/profile_1.png" alt="프로필 사진">
+    <div>
+      <h1>안녕하세요, 김승주입니다.</h1>
+      <div class="role">Mobile App Developer · Flutter</div>
+      <div class="contact">
+        <a href="mailto:ksj44122@gmail.com">✉️ ksj44122@gmail.com</a>
+        <a href="tel:010-4412-5912">📞 010-4412-5912</a>
+      </div>
+    </div>
+  </div>
+  <p class="intro">
+    Flutter 경력 4년의 앱 개발자입니다. 회사에서 총 3년 동안 근무하며 다양한 앱 개발에 참여했고, 개인 앱도 개발해 운영하고 있습니다. Swift·Kotlin 네이티브 코드도 필요하면 직접 씁니다.
+  </p>
+</header>
+
+<main class="wrap">
+
+<section id="skills">
+  <h2>🛠️ 기술 스택</h2>
+  <div class="stack">
+    <div class="card">
+      <h3>Flutter · Dart</h3>
+      <p>GetX·Provider 상태관리와 커스텀 UI를 기본으로, 음성 인식·결제·광고·푸시·웹뷰·위치·블루투스까지 앱에 필요한 기능 대부분을 붙여 봤습니다.</p>
+      <div class="chips"><span class="chip">차트</span><span class="chip">BLE</span><span class="chip">GetX</span><span class="chip">AdMob</span><span class="chip">GPS · 지도</span><span class="chip">Provider</span><span class="chip">iCloud 백업</span><span class="chip">다국어 · 다크모드</span><span class="chip">FCM · 로컬 알림</span><span class="chip">녹음·재생·ffmpeg</span><span class="chip">카메라 · QR · 바코드</span><span class="chip">In-App Purchase</span><span class="chip">카카오·네이버·애플·구글 로그인</span><span class="chip">Foreground Service</span><span class="chip">WebView · JS Bridge</span><span class="chip">STT (speech_to_text)</span></div>
+    </div>
+    <div class="card">
+      <h3>네이티브 연동</h3>
+      <p>Flutter 패키지로 안 되는 부분은 네이티브로 직접 작성합니다. iOS 커스텀 키보드 익스텐션, 안드로이드·iOS 홈 화면 위젯, 안드로이드 NotificationListenerService(다른 앱 알림을 받아 합치고 나눠 보내기, 포그라운드 서비스).</p>
+      <div class="chips"><span class="chip">Java</span><span class="chip">Swift</span><span class="chip">Kotlin</span><span class="chip">홈 화면 위젯</span><span class="chip">Method Channel</span><span class="chip">Foreground Service</span><span class="chip">Keyboard Extension</span><span class="chip">NotificationListenerService</span></div>
+    </div>
+    <div class="card">
+      <h3>통신 · 백엔드</h3>
+      <p>REST는 물론 TCP 소켓·웹소켓 프로토콜을 직접 구현해 봤고, Firebase 전반(Auth, Firestore, Storage, FCM, Analytics)과 presigned URL 업로드, Git 협업 경험이 있습니다.</p>
+      <div class="chips"><span class="chip">Git</span><span class="chip">Firebase</span><span class="chip">Firestore</span><span class="chip">WebSocket</span><span class="chip">TCP Socket</span><span class="chip">dio / http</span><span class="chip">Presigned URL</span></div>
+    </div>
+  </div>
+</section>
+
+
+<section id="projects">
+  <h2>👨‍💻 프로젝트 <span class="sub">직접 개발했거나 개발에 참여한 앱만</span></h2>
+
+  <div class="seg" role="tablist">
+    <button class="on" data-group="g-solo">1인 앱</button>
+    <button data-group="g-ino">이노컴즈</button>
+    <button data-group="g-bri">브라이튼</button>
+  </div>
+
+  <!-- ───────── 1인 개발 ───────── -->
+  <div class="group on" id="g-solo">
+    <div class="group-title"><h3>1인 개발</h3><span class="period">2023.02 ~ 현재</span></div>
+
+    <!-- 키보드으 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_sjkey.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>키보드으</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6745718633" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2025.02 ~ 2025.04</span><span class="m"><i>인원</i>앱 개발 1명</span><span class="m"><i>비고</i>2025.05 출시, 현재 v27까지 업데이트 중</span></div>
+          <p class="lead">Swift로 직접 만든 아이폰 커스텀 키보드. 키 배열·크기·색·진동·기능키를 앱에서 전부 바꾸고, 커뮤니티와 배틀 기능까지 넣은 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/kb_2_home.png" alt=""><img src="img/kb_3_board.png" alt=""><img src="img/kb_4_battle.png" alt=""><img src="img/kb_1_type.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>기능</h4>
+          <ul>
+            <li><b>Swift 키보드 익스텐션</b> 약 3,500줄: 제스처 입력, 자동 완성, 글자 대치, 즐겨찾기·클립보드, 팝업 UI, 한글 조합기(composer) 직접 작성</li>
+            <li>앱(Flutter): 키 종류·크기·색상·진동·기능키·보조키·상단키·전환키 설정, 앱 ↔ 익스텐션 설정 공유</li>
+            <li>Firestore 기반 자유 게시판·댓글·알림, 타자 배틀 기록</li>
+            <li>iCloud 백업·복원, 인앱 결제(후원), FCM</li>
+            <li>iOS 26 리퀴드 글래스 UI 적용, 온보딩, 다크모드</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">Swift Keyboard Extension</span><span class="chip">UIKit</span><span class="chip">App Group</span><span class="chip">GetX</span><span class="chip">cloud_firestore</span><span class="chip">firebase_storage</span><span class="chip">FCM</span><span class="chip">in_app_purchase</span><span class="chip">iCloud</span><span class="chip">liquid_glass_widgets</span><span class="chip">encrypt</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 타임라인 리플레이 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_timeline.png" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>Timeline Replay</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6832997669" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=com.travelwithme.timelinereplay" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2026.10 ~ 현재</span><span class="m"><i>인원</i>앱 개발 1명</span><span class="m"><i>비고</i>7개 언어</span></div>
+          <p class="lead">구글 지도 타임라인 파일이나 사진으로 그동안 다녀온 길을 지도 위에 다시 그리고, 3D 탈것이 경로를 따라가는 영상으로 만들어 주는 앱. 오픈소스 Timeline Visualizer에서 영감을 받음</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/timeline_1.jpg" alt=""><img src="img/timeline_2.jpg" alt=""><img src="img/timeline_3.jpg" alt=""><img src="img/timeline_4.jpg" alt=""><img src="img/timeline_5.jpg" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>기능</h4>
+          <ul>
+            <li>구글 지도 타임라인 JSON 읽기, 여러 파일 합치기, 사진 위치 정보로 타임라인 만들기</li>
+            <li>지도 타일 없이 Natural Earth · GeoNames 데이터로 메르카토르 · 이퀄 어스 · 3D 지구본을 직접 구현. 세 모양 사이를 끊김 없이 바꾸고, 지명은 줌 단계마다 겹치지 않게 배치</li>
+            <li>이동 수단(걷기 · 자동차 · 기차 · 비행기 등)에 따라 3D 탈것이 바뀌며 경로를 따라감</li>
+            <li>영상 만들기: 장면을 프레임마다 그려 H.264 MP4로 인코딩 후 저장·공유</li>
+            <li>패드형 · 폴드형 화면 대응</li>
+            <li>애드몹 보상형·전면 광고, 인앱 후원(광고 제거)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">Claude Code</span><span class="chip">CustomPainter</span><span class="chip">flutter_quick_video_encoder</span><span class="chip">photo_manager</span><span class="chip">GetX</span><span class="chip">liquid_glass_widgets</span><span class="chip">google_mobile_ads</span><span class="chip">in_app_purchase</span><span class="chip">Firebase</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 워뇨띠 AI -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_wonyotti.png" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>워뇨띠 AI</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6823062755" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=com.travelwithme.wonyotti" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2026.10 ~ 2026.11</span><span class="m"><i>인원</i>앱·서버 개발 1명</span><span class="m"><i>비고</i>2026.11 출시</span></div>
+          <p class="lead">공개된 비트멕스 거래 내역 144만 건을 통계로 풀어 쓴 책자와, 비트코인·이더리움 추세 알림(유료 구독)을 담은 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/wonyotti_t0.png" alt=""><img src="img/wonyotti_t2.png" alt=""><img src="img/wonyotti_c3.png" alt=""><img src="img/wonyotti_lab.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>기능</h4>
+          <ul>
+            <li>거래 내역을 Python으로 분석·백테스트해 정리한 책자 18장, 이어 읽기·읽은 장 기억</li>
+            <li>서버(Cloud Functions)가 15분마다 바이낸스 시세로 추세를 계산해 롱·숏 전환 시 푸시</li>
+            <li>게이트io 선물 API 자동매매(운영자 계정), 변동성 기준 레버리지 계산</li>
+            <li>커뮤니티 글 수집·Claude API 요약, 새 글·댓글 알림</li>
+            <li>월 구독 결제 + 서버 영수증 검증(App Store Server API, Play Developer API), 환불·해지 실시간 알림</li>
+            <li>Google·Apple·이메일 로그인, 홈 화면 위젯, 한국어·영어</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">Claude Code</span><span class="chip">Cloud Functions (TypeScript)</span><span class="chip">Claude API</span><span class="chip">cloud_firestore</span><span class="chip">firebase_auth</span><span class="chip">FCM</span><span class="chip">in_app_purchase</span><span class="chip">fl_chart</span><span class="chip">home_widget</span><span class="chip">GetX</span><span class="chip">liquid_glass_widgets</span><span class="chip">Python</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 짝ai -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_jjak.png" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>짝ai</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6821759183" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=com.travelwithme.jjakai" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2026.10 ~ 2026.11</span><span class="m"><i>인원</i>앱·서버 개발 1명</span><span class="m"><i>비고</i>2026.11 출시, 관리자 앱 별도</span></div>
+          <p class="lead">AI가 얼굴 사진과 프로필을 분석해 리포트를 주고, 점수와 조건이 맞는 이성을 하루 한 명씩 소개해 주는 소개팅 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/jjak_1.jpg" alt=""><img src="img/jjak_2.jpg" alt=""><img src="img/jjak_3.jpg" alt=""><img src="img/jjak_4.jpg" alt=""><img src="img/jjak_5.jpg" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>기능</h4>
+          <ul>
+            <li>Claude·GPT 두 모델로 얼굴 사진 분석 후 종합해 외모 상위 %·얼굴 리포트 제공, 사진은 폰에서 ML Kit로 얼굴 먼저 검사</li>
+            <li>프로필 글 AI 채점, 매일 오후 8시 서버에서 나이·키·지역·점수 조건으로 매칭</li>
+            <li>O/X 응답·결제 마감, 채팅, 신고·문의, 탈퇴 회원 정리 등 스케줄 작업</li>
+            <li>인앱 결제 + 서버 영수증 검증, 크레딧, 가격은 Firestore 값으로 앱 업데이트 없이 변경</li>
+            <li>Firebase 전화 인증, FCM, 애드몹 전면 광고</li>
+            <li>관리자 앱(Flutter) 따로: 검토 대기 회원 승인, 문의 답장, AI 모델·프롬프트 변경</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">Claude Code</span><span class="chip">Claude API</span><span class="chip">OpenAI API</span><span class="chip">Cloud Functions (TypeScript)</span><span class="chip">google_mlkit_face_detection</span><span class="chip">firebase_auth</span><span class="chip">cloud_firestore</span><span class="chip">firebase_storage</span><span class="chip">FCM</span><span class="chip">in_app_purchase</span><span class="chip">google_mobile_ads</span><span class="chip">GetX</span><span class="chip">liquid_glass_widgets</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 트레블 세이버 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_travel_pro.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>트레블 세이버 / 트레블 세이버 Pro</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6449733757" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> Pro</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=com.travelwithme.travelsaver" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Pro</a>
+              <a class="badge" href="https://apps.apple.com/kr/app/id6472604338" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> 무료</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=com.travelwithme.travelsaver_trial" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> 무료</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2023.02 ~ 2023.06</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+          <p class="lead">지금 있는 나라의 긴급번호와 대사관·영사관 정보를 오프라인에서 보여주는 여행 앱. 3D 지구본 UI</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/travel_1.png" alt=""><img src="img/travel_2.png" alt=""><img src="img/travel_3.png" alt="">
+        <img src="img/ss_travel_pro_1.png" alt=""><img src="img/ss_travel_pro_2.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>기능</h4>
+          <ul>
+            <li>자체 지구본(flutter_earth·flutter_cube 수정) 위에 위도·경도 표시</li>
+            <li>240개국 긴급번호, 한국·일본·영국·미국 기준 대사관 정보(국가별 179~209개) 표시, 각 지점까지 거리 계산</li>
+            <li>오프라인 지오코딩(geocoder_offline 수정)으로 온라인 지도·해상도 업그레이드 빼고 전부 오프라인 동작</li>
+            <li>https 파일 다운로드, 13개 언어 지원</li>
+            <li>무료판은 대사관 정보 제한 + 애드몹 배너</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">flutter_earth (customized)</span><span class="chip">flutter_cube (customized)</span><span class="chip">geocoder_offline (customized)</span><span class="chip">geolocator</span><span class="chip">OpenStreetMap</span><span class="chip">Firebase</span><span class="chip">AdMob</span><span class="chip">GetStorage</span><span class="chip">GetX</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 스택알림 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_stack.png" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>스택알림</h3>
+            <div class="links">
+              <a class="badge" href="https://play.google.com/store/apps/details?id=com.travelwithme.stack_notification" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2023.09 ~ 2023.10</span><span class="m"><i>인원</i>앱 개발 1명</span><span class="m"><i>비고</i>Android</span></div>
+          <p class="lead">앱을 열지 않고도 다른 앱의 알림 내용을 전부 볼 수 있게, 알림을 쌓고 합치고 나눠 보내는 알림 제어 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/stack_1.png" alt=""><img src="img/stack_2.jpeg" alt=""><img src="img/stack_3.jpg" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>기능</h4>
+          <ul>
+            <li>Java <b>NotificationListenerService</b>로 선택한 앱의 알림을 받아 기존 알림에 새 내용을 이어 붙이거나 그룹화</li>
+            <li>알림 최대 줄 수를 넘으면 분할 전송해 카톡 500자·라인/인스타 DM 1000자 제한 없이 전부 표시</li>
+            <li>원본 알림의 동작(답장 등)을 복사, 상대가 메시지를 지워도 알림은 유지</li>
+            <li>Foreground service: 부팅 시 재시작, 절전·Doze·배터리 최적화 무시</li>
+            <li>앱별 진동 패턴·접두사 설정, 5개 언어, 다크·라이트, 자체 sliver 스크롤바 UI</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">NotificationListenerService (Java)</span><span class="chip">flutter_foreground_task</span><span class="chip">flutter_local_notifications</span><span class="chip">installed_apps</span><span class="chip">GetStorage</span><span class="chip">GetX</span>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- ───────── 이노컴즈 ───────── -->
+  <div class="group" id="g-ino">
+    <div class="group-title"><h3>(주)이노컴즈</h3><span class="period">2024.04 ~ 2026.04 · Flutter 앱 개발자</span></div>
+
+    <!-- 파티마 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_fatima.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>대구파티마여성병원</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6797134156" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=com.inocoms.fatima" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2026.03 ~ 2026.04</span><span class="m"><i>인원</i>앱 개발 2명</span></div>
+          <p class="lead">병원 진료 예약·접수·검사 결과 조회에 데이로그 산모 커뮤니티를 합친 병원 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/ss_fatima_1.png" alt=""><img src="img/ss_fatima_2.png" alt=""><img src="img/ss_fatima_3.png" alt=""><img src="img/ss_fatima_4.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>진료 예약, 접수, 예약 내역, 검사 결과 화면</li>
+            <li>병원 예약 시스템(외부 업체)과의 <b>TCP 소켓 통신 모듈</b> 직접 구현</li>
+            <li>기존 데이로그 서버 + 새 병원 서버 + 소켓 서버, 세 곳의 응답을 하나의 Success/Failure 결과 타입으로 통일</li>
+            <li>카카오·네이버·애플·구글 로그인, FCM 푸시</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">dart:io Socket</span><span class="chip">GetX</span><span class="chip">dio</span><span class="chip">Firebase Auth / FCM / Analytics</span>
+            <span class="chip">kakao · naver · apple · google 로그인</span><span class="chip">syncfusion_flutter_charts</span><span class="chip">video_player</span><span class="chip">qr_code_scanner_plus</span><span class="chip">flutter_inappwebview</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 현대성우 재고관리 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_wms.png" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>현대성우 창고 재고관리 (WMS)</h3>
+            <div class="links"><span class="badge inner">업체 내부 배포 · Android</span></div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2025.09 ~ 2025.12</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+          <p class="lead">현대성우캐스팅 공장 창고의 입고·출고·재고를 태블릿과 개인 기기에서 처리하는 작업자용 앱</p>
+        </div>
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>입고, 출고, 위치 이동, 수리, 재고, 월별 재고, 통합 검색 화면 전체</li>
+            <li>QR·바코드 스캔으로 품목 처리, 품목 QR 생성·저장</li>
+            <li>FCM 푸시, 보안 저장소 로그인 유지</li>
+            <li>공장에 거치한 태블릿과 개인 폰 모두에서 쓰이도록 화면 크기 대응</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip">GetX</span><span class="chip">http</span><span class="chip hi">simple_barcode_scanner</span><span class="chip">qr_code_scanner_plus</span><span class="chip">qr_flutter</span><span class="chip">FCM</span><span class="chip">flutter_secure_storage</span><span class="chip">screenshot</span>
+          </div>
+        </div>
+      </div>
+      <div class="sub-proj">
+        <div class="head">
+          <div style="flex:1;min-width:0">
+            <div class="title-row"><h3 style="font-size:15px">충주 물류창고 PDA 앱</h3><div class="links"><span class="badge inner">업체 내부 배포 · Android</span></div></div>
+            <div class="meta"><span class="m"><i>기간</i>2026</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+            <p class="lead small muted">같은 WMS 백엔드를 쓰는 현대성우 충주 물류창고 작업자 PDA용 앱. 재고관리 앱의 구조를 그대로 가져가 개발.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 쏠라이트 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_solite_v2.png" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>현대성우쏠라이트 스마트워크 v2</h3>
+            <div class="links">
+              <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.inocoms.solite" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2025.06 ~ 2025.08</span><span class="m"><i>인원</i>앱 개발 1명</span><span class="m"><i>비고</i>기존 v1을 새로 만든 버전 2</span></div>
+          <p class="lead">경주 공장 직원용 출퇴근 체크, 급여명세, 작업복 신청 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/play_solite_2.png" alt=""><img src="img/play_solite_3.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li><b>GPS + 접속 와이파이 + 공인 IP</b> 세 가지로 사업장 안에 있는지 확인하는 출퇴근 체크</li>
+            <li>가짜 위치 앱 감지, 위치 권한·네트워크 상태 안내</li>
+            <li>급여명세 조회와 파일 다운로드, 작업복 신청</li>
+            <li>FCM 푸시, 앱 강제 업데이트 안내</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip">GetX</span><span class="chip hi">geolocator</span><span class="chip hi">detect_fake_location</span><span class="chip">wifi_iot</span><span class="chip">network_info_plus</span><span class="chip">dart_ipify</span><span class="chip">flutter_downloader</span><span class="chip">file_picker</span><span class="chip">FCM</span><span class="chip">upgrader</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- ITC -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_itc.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>입이 기억하는 ITC영어</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6741463400" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.kodc.itc" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2024.11 ~ 2025.02</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+          <p class="lead">강의 영상과 말하기 연습이 들어간 영어 학습 앱. 말한 문장을 음성 인식으로 받아 정답과 비교해 채점</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/ss_itc_1.png" alt=""><img src="img/ss_itc_2.png" alt=""><img src="img/ss_itc_3.png" alt=""><img src="img/ss_itc_4.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>강의실 상세 화면 <b>49종</b> 전체 (단어·문장·프리토킹·레벨업 등)</li>
+            <li>STT로 받은 문장을 diff_match_patch로 정답과 비교해 틀린 단어 표시·점수 산정</li>
+            <li>녹음·재생·ffmpeg 변환, 웹소켓 통신</li>
+            <li>프리토킹 채팅: 말풍선 크기가 바뀔 때 전체 리스트가 자연스럽게 움직이는 애니메이션</li>
+            <li>캐릭터 구매 화면: 위아래 양쪽 스크롤 위치를 유지하는 sliver 구성</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip">GetX</span><span class="chip hi">speech_to_text</span><span class="chip hi">diff_match_patch</span><span class="chip">record</span><span class="chip">flutter_sound</span><span class="chip">ffmpeg_kit</span><span class="chip">web_socket_channel</span><span class="chip">audio_session</span><span class="chip">wakelock_plus</span><span class="chip">FCM</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 풍산 안강 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_psangang.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>풍산노동조합 안강지부</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id1259636175" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.kodc.psangang" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2024.09 ~ 2024.10</span><span class="m"><i>인원</i>앱 개발 1명</span><span class="m"><i>비고</i>Android 2024.09.26 · iOS 2024.10.05 출시</span></div>
+          <p class="lead">지원이 끝난 Apache Cordova 앱을 Flutter 웹뷰 앱으로 옮겨 다시 출시</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/ss_psangang_1.png" alt=""><img src="img/ss_psangang_2.png" alt=""><img src="img/ss_psangang_3.png" alt=""><img src="img/ss_psangang_4.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>Cordova 디바이스 인증을 웹에서 걷어내고, 웹이 필요로 하는 값(디바이스 토큰, FCM 토큰, 화면 이동)을 JS 함수로 추가해 Flutter에서 호출하는 브리지 구성</li>
+            <li>기존 토큰 발급 API를 그대로 써서 서버 변경 없이 전환</li>
+            <li>로그인 없이 홈으로 들어가던 현상을 checkLogIn으로 차단</li>
+            <li>알림 상세에서 뒤로 가면 목록이 비는 웹 버그를 앱 쪽 라우팅으로 우회</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">flutter_inappwebview</span><span class="chip">JS Bridge</span><span class="chip">GetX</span><span class="chip">FCM</span><span class="chip">flutter_local_notifications</span><span class="chip">flutter_downloader</span><span class="chip">upgrader</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 데이로그 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_daylog.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>데이로그 리뉴얼</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id1225558341" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.kodc.momslifenew" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2024.05 ~ 2024.08</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+          <p class="lead">임산부를 위한 디지털 산모수첩 + 맘 커뮤니티 앱을 Flutter로 새로 만든 리뉴얼</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/ss_daylog_1.png" alt=""><img src="img/ss_daylog_2.png" alt=""><img src="img/ss_daylog_3.png" alt=""><img src="img/ss_daylog_4.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>직접 그린 커스텀 캘린더(산모수첩 일정·기록)</li>
+            <li>커뮤니티 목록 → 상세 전체 Hero 전환, 상세 페이지뷰 좌우 넘김</li>
+            <li>카카오·네이버·애플·구글 로그인, FCM, Firebase Analytics</li>
+            <li>사진·영상 업로드(presigned URL), 차트, QR 스캔, 길게 눌러 메뉴(super_context_menu)</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip">GetX</span><span class="chip">dio</span><span class="chip hi">SNS 로그인 4종</span><span class="chip">Firebase Auth / FCM / Analytics</span><span class="chip">syncfusion_flutter_charts</span><span class="chip">video_player</span><span class="chip">super_context_menu</span><span class="chip">qr_code_scanner_plus</span><span class="chip">Presigned URL</span>
+          </div>
+        </div>
+      </div>
+      <div class="sub-proj">
+        <div class="head">
+          <img class="icon" src="img/icon_daylog_vn.jpg" alt="">
+          <div style="flex:1;min-width:0">
+            <div class="title-row">
+              <h3 style="font-size:15px">DayLog 베트남 버전</h3>
+              <div class="links">
+                <a class="badge" href="https://apps.apple.com/kr/app/id6755370850" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+                <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.inocoms.daylog_vn" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+              </div>
+            </div>
+            <div class="meta"><span class="m"><i>기간</i>2025.11 출시</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+            <p class="lead small muted">같은 코드베이스에 다국어(베트남어)를 붙여 별도 앱으로 출시.</p>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <div class="sub-group"><h3>웹뷰 앱</h3><span class="period">기존 웹 서비스를 Flutter 웹뷰로 감싸고, 로그인·결제·푸시·위젯처럼 웹이 못 하는 부분을 앱이 처리</span></div>
+
+    <!-- 하트키 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_heartkey.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>하트키</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id1438840255" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.kodc.beautymind" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2024.04 ~ 2024.05</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+          <p class="lead">부산진구 정신건강복지센터 하트키 앱 리뉴얼. 웹뷰 앱에 네이티브 홈 화면 위젯을 더함</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/ss_heartkey_1.png" alt=""><img src="img/ss_heartkey_2.png" alt=""><img src="img/ss_heartkey_3.png" alt=""><img src="img/ss_heartkey_4.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li><b>홈 화면 위젯</b>: 안드로이드(Kotlin)·iOS(Swift) 네이티브로 직접 작성</li>
+            <li>웹-앱 통신: 기기 GPS 정보 전달, 소셜 로그인 버튼 처리, 웹뷰 쿠키 유지</li>
+            <li>지도 페이지 위에 앱 데이터 오버레이</li>
+            <li>FCM 푸시, 이미지 저장·공유</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">Kotlin 홈 위젯</span><span class="chip hi">Swift 홈 위젯</span><span class="chip">home_widget</span><span class="chip">workmanager</span><span class="chip">flutter_inappwebview</span><span class="chip">geolocator</span><span class="chip">kakao · naver · apple 로그인</span><span class="chip">FCM</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 사주테라피 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_saju.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>사주테라피 v2</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id1441091860" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.kodc.sajutherapy" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2024.12 ~ 2025.01</span><span class="m"><i>인원</i>앱 개발 1명</span><span class="m"><i>비고</i>기존 v1을 새로 만든 버전 2</span></div>
+          <p class="lead">사주 상담 서비스의 앱을 Flutter 웹뷰 기반으로 새로 만들고, 웹이 못 하는 로그인·결제·광고·이미지 처리는 앱이 맡도록 한 버전 2</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/ss_saju_1.png" alt=""><img src="img/ss_saju_2.png" alt=""><img src="img/ss_saju_3.png" alt=""><img src="img/ss_saju_4.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>웹에 필요한 데이터를 JS 함수로 추가하고 Flutter에서 호출하는 브리지 구성</li>
+            <li>구글·애플·카카오·네이버 로그인을 앱에서 처리해 웹으로 전달</li>
+            <li>애드몹, 결제, 이미지 업로드를 Flutter-웹 연동</li>
+            <li>안드로이드 타임피커, 이미지 피커, 긴 줄 피드백 60초 딜레이를 Flutter로 구현</li>
+            <li>FCM 푸시, 이미지 저장</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">flutter_inappwebview</span><span class="chip">JS Bridge</span><span class="chip">GetX</span><span class="chip">google · apple · kakao · naver 로그인</span><span class="chip">AdMob</span><span class="chip">image_picker</span><span class="chip">FCM</span><span class="chip">flutter_local_notifications</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 에이치그린파워 -->
+    <article class="card proj">
+      <div class="head">
+        <img class="icon" src="img/icon_hgp.jpg" alt="">
+        <div style="flex:1;min-width:0">
+          <div class="title-row">
+            <h3>에이치그린파워 노동조합</h3>
+            <div class="links">
+              <a class="badge" href="https://apps.apple.com/kr/app/id6736606237" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true"><path d="M16.7 12.8c0-2.6 2.1-3.8 2.2-3.9-1.2-1.8-3.1-2-3.7-2-1.6-.2-3.1.9-3.9.9-.8 0-2-.9-3.4-.9-1.7 0-3.3 1-4.2 2.6-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.4-.8 1.6 0 2 .8 3.4.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9 0 0-2.8-1.1-2.8-4.1zM14.2 5.2c.7-.9 1.2-2.1 1.1-3.2-1 0-2.3.7-3 1.6-.7.8-1.3 2-1.1 3.1 1.1.1 2.3-.6 3-1.5z"/></svg> App Store</a>
+              <a class="badge" href="https://play.google.com/store/apps/details?id=kr.co.inocoms.hgreenpower" target="_blank"><svg class="bi" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true"><path fill="#00d7fe" d="M3.6 2.4 13 12l-9.4 9.6c-.4-.2-.6-.7-.6-1.2V3.6c0-.5.2-1 .6-1.2z"/><path fill="#ffce00" d="m16.4 15.4-3.4-3.4 3.4-3.4 4.3 2.4c1.2.7 1.2 1.3 0 2z"/><path fill="#ff3a44" d="M13 12 3.6 21.6c.4.2.9.2 1.4-.1l11.4-6.1z"/><path fill="#00f076" d="M16.4 8.6 5 2.5c-.5-.3-1-.3-1.4-.1L13 12z"/></svg> Google Play</a>
+            </div>
+          </div>
+          <div class="meta"><span class="m"><i>기간</i>2024.09</span><span class="m"><i>인원</i>앱 개발 1명</span></div>
+          <p class="lead">노동조합 홈페이지를 웹뷰로 감싼 앱. 푸시 알림과 앱 업데이트 안내를 붙여 열흘 안에 양쪽 스토어 출시</p>
+        </div>
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul><li>웹뷰 앱 전체, FCM 푸시·로컬 알림, 강제 업데이트 안내, 파일 다운로드</li></ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips"><span class="chip hi">flutter_inappwebview</span><span class="chip">GetX</span><span class="chip">FCM</span><span class="chip">flutter_local_notifications</span><span class="chip">upgrader</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <!-- ───────── 브라이튼 ───────── -->
+  <div class="group" id="g-bri">
+    <div class="group-title"><h3>(주)브라이튼</h3><span class="period">2022.05 ~ 2023.06 · Flutter 앱 개발자</span></div>
+
+    <!-- 본당수첩 -->
+    <article class="card proj">
+      <div class="head">
+        <div style="flex:1;min-width:0">
+          <div class="title-row"><h3>본당수첩 v2</h3></div>
+          <div class="meta"><span class="m"><i>기간</i>2023.03 ~ 2023.05</span><span class="m"><i>인원</i>앱 개발 3명</span></div>
+          <p class="lead">가톨릭 교회 모바일 커뮤니티 앱 버전 2. UI를 전면 교체하고 카페 기능을 추가</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/bondang_2.png" alt=""><img src="img/bondang_3.png" alt=""><img src="img/bondang_4.png" alt=""><img src="img/bondang_5.png" alt=""><img src="img/bondang_6.png" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>홈, 본당 및 하위 페이지, 그룹웨어 및 하위 페이지 UI와 Provider</li>
+            <li>앱 라우트·네비게이터, 글씨 크기 대응, 데이터 fetch</li>
+            <li>바코드 생성·인증, 메시지·댓글 UI(사진 첨부·수정·삭제)</li>
+            <li>flutter_quill로 공문 작성 기능</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip">Provider</span><span class="chip">card_swiper</span><span class="chip">expandable</span><span class="chip">wechat_asset_picker (customized)</span><span class="chip">chips_choice</span><span class="chip hi">flutter_quill</span><span class="chip">barcode</span><span class="chip">mobile_scanner</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 헬스워킹 -->
+    <article class="card proj">
+      <div class="head">
+        <div style="flex:1;min-width:0">
+          <div class="title-row"><h3>헬스워킹</h3></div>
+          <div class="meta"><span class="m"><i>기간</i>2022.11 ~ 2023.01</span><span class="m"><i>인원</i>앱 개발 1명 · 기기 펌웨어(Python) 1명</span></div>
+          <p class="lead">다리가 불편한 사람을 위한 보행 보조 기기를 블루투스로 제어하고, 받은 데이터를 기기 DB에 쌓아 그래프로 보여주는 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img src="img/health_1.jpg" alt=""><img src="img/health_2.jpg" alt=""><img src="img/health_3.jpg" alt=""><img src="img/health_4.jpg" alt=""><img src="img/health_5.jpg" alt=""><img src="img/health_6.jpg" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>sqflite DB 설계·생성, 단위별 select·insert</li>
+            <li>BLE 기기와 데이터 송수신</li>
+            <li>그래프 UI, foreground service로 백그라운드 수집</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips">
+            <span class="chip hi">flutter_reactive_ble</span><span class="chip">flutter_background_service</span><span class="chip">awesome_notifications</span><span class="chip">permission_handler</span><span class="chip">percent_indicator</span><span class="chip">Provider</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 차량 통행 제어 -->
+    <article class="card proj">
+      <div class="head">
+        <div style="flex:1;min-width:0">
+          <div class="title-row"><h3>차량 통행 제어 앱</h3><div class="links"><span class="badge inner">Android · 전광판 연동</span></div></div>
+          <div class="meta"><span class="m"><i>기간</i>2022.08 ~ 2022.10</span><span class="m"><i>인원</i>앱 개발 1명 · 제어 프로그램(Visual Basic) 1명</span></div>
+          <p class="lead">상주의 일방통행 도로를 지연 없이 양방통행으로 제어하는 시스템의 데이터를 받아, 안드로이드 기기에 연결된 전광판에 현재 상황을 표시</p>
+        </div>
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul><li>전광판 UI</li><li>SQL DB 직접 조회(sql_conn), cron 주기 갱신</li></ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips"><span class="chip hi">sql_conn</span><span class="chip">cron</span><span class="chip">GetX</span></div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 번호판 -->
+    <article class="card proj">
+      <div class="head">
+        <div style="flex:1;min-width:0">
+          <div class="title-row"><h3>차량 번호판 인식 앱</h3></div>
+          <div class="meta"><span class="m"><i>기간</i>2022.06 ~ 2022.07</span><span class="m"><i>인원</i>앱 개발 1명 · 인식 모듈(C++) 1명</span></div>
+          <p class="lead">카메라 스트림을 C++ 번호판 인식 모듈에 넘겨 끊김 없이 연속 인식하는 앱</p>
+        </div>
+      </div>
+      <div class="shots">
+        <img class="wide" src="img/plate_1.jpeg" alt="">
+      </div>
+      <div class="body">
+        <div>
+          <h4>담당한 기능</h4>
+          <ul>
+            <li>camerawesome 이미지 스트림 수신, 카메라 종횡비 처리</li>
+            <li>dart:ffi로 C++ 모듈 호출, compute(Isolate)로 별도 메모리에서 실행해 UI 끊김 방지</li>
+          </ul>
+        </div>
+        <div>
+          <h4>기술 · 라이브러리</h4>
+          <div class="chips"><span class="chip hi">dart:ffi</span><span class="chip hi">Isolate</span><span class="chip">camerawesome</span><span class="chip">permission_handler</span><span class="chip">GetX</span></div>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+
+<section id="career">
+  <h2>💼 경력</h2>
+  <div class="card">
+    <div class="timeline">
+      <div class="when">2024.04 ~ 2026.04</div>
+      <div class="what"><b>(주)이노컴즈</b> · Flutter 앱 개발자
+        <div class="d">병원·제조·교육·노동조합 외주 앱 8개 개발·출시. Cordova 앱 Flutter 전환, 앱 14개 FCM HTTP v1 마이그레이션, 레거시 앱 SDK 34 업그레이드.</div></div>
+      <div class="when">2023.06 ~ 현재</div>
+      <div class="what"><b>1인 앱 개발자</b>
+        <div class="d">키보드으, Timeline Replay, 워뇨띠 AI, 짝ai, 트레블 세이버, 스택알림 출시·운영.</div></div>
+      <div class="when">2022.05 ~ 2023.06</div>
+      <div class="what"><b>(주)브라이튼</b> · Flutter 앱 개발자
+        <div class="d">C++ 모듈, 블루투스 기기, SQL DB 등 하드웨어·외부 시스템과 붙는 앱 개발.</div></div>
+    </div>
+  </div>
+
+  <div class="two">
+    <div class="card">
+      <h3 style="margin-bottom:10px">👨‍🎓 학력</h3>
+      <div class="timeline">
+        <div class="when">2013.03 ~ 2022.02</div>
+        <div class="what"><b>대구가톨릭대학교</b><div class="d">정보보호학과 학사 졸업</div></div>
+      </div>
+    </div>
+    <div class="card">
+      <h3 style="margin-bottom:10px">🤵 그 외 활동</h3>
+      <div class="timeline">
+        <div class="when">2019.02 ~ 2020.02</div><div class="what">현대자동차 울산공장 촉탁계약직</div>
+        <div class="when">2016.08 ~ 2017.08</div><div class="what">호주 워킹홀리데이</div>
+        <div class="when">2014.04 ~ 2016.01</div><div class="what">육군 병장 만기 전역</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>김승주 · ksj44122@gmail.com · 010-4412-5912</footer>
+<script>
+// 프로젝트 세그먼트
+document.querySelectorAll('.seg button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    document.querySelectorAll('.seg button').forEach(x=>x.classList.toggle('on',x===b));
+    document.querySelectorAll('.group').forEach(g=>g.classList.toggle('on',g.id===b.dataset.group));
+  });
+});
+</script>
+</body>
+</html>
